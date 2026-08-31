@@ -44,6 +44,12 @@
 </head>
 
 <body class="counter-scroll">
+    <script>
+      // Que el navegador nunca restaure una posición de scroll vieja al
+      // recargar — el control de a dónde arrancar lo hace el script de
+      // más abajo (tope de página, o la card puntual si viene con hash).
+      if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+    </script>
     <!-- Start Wrapper -->
     <div id="wrapper">
 
@@ -249,7 +255,7 @@
                     </div>
                     <!-- Stacking Cards -->
                     <div class="jd-work-list" id="jd-work-list">
-                        <div class="jd-work-element" data-project="0">
+                        <div class="jd-work-element" id="work-card-0" data-project="0">
                             <a href="work-helve-tica.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-1.jpg" alt="Cortometrajes">
@@ -266,7 +272,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="jd-work-element" data-project="1">
+                        <div class="jd-work-element" id="work-card-1" data-project="1">
                             <a href="work-x-direct-mobile.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-2.jpg" alt="Comerciales / Ads">
@@ -283,7 +289,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="jd-work-element" data-project="2">
+                        <div class="jd-work-element" id="work-card-2" data-project="2">
                             <a href="work-uixdr-agency.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-3.jpg" alt="Motion Graphics">
@@ -300,7 +306,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="jd-work-element" data-project="3">
+                        <div class="jd-work-element" id="work-card-3" data-project="3">
                             <a href="work-nova-branding.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-4.jpg" alt="Reels / Redes">
@@ -317,7 +323,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="jd-work-element" data-project="4">
+                        <div class="jd-work-element" id="work-card-4" data-project="4">
                             <a href="work-piezas-graficas.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-5.jpg" alt="Piezas gráficas">
@@ -334,7 +340,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="jd-work-element" data-project="5">
+                        <div class="jd-work-element" id="work-card-5" data-project="5">
                             <a href="work-podcast.html" class="jd-wg-work">
                                 <div class="jd-work-image">
                                     <img src="asset/images/section/works-6.jpg" alt="Podcast">
@@ -663,7 +669,8 @@
         // punto la card de servicios cubre del todo a las cards.
         window.__jdWorksNavInfo = {
           scrollTrigger: tl.scrollTrigger,
-          servicesProgress: (numCards + 1) / totalUnits
+          servicesProgress: (numCards + 1) / totalUnits,
+          totalUnits: totalUnits
         };
 
         // Each card takes 1 timeline unit total, but only animates during
@@ -991,6 +998,50 @@
         if (!nextField) return;
         var base = window.location.href.split(/[?#]/)[0].replace(/index\.html$/, "");
         nextField.value = base + "thank-you.html";
+      })();
+
+      // --- Dónde arrancar el scroll al cargar la página ---
+      // Sin hash (recarga normal, o entrar por primera vez): siempre al
+      // tope. Con hash "#work-card-N" (viene del botón "Back to Works" de
+      // una landing): saltar directo a esa card puntual, no al inicio de
+      // toda la sección Works.
+      (function () {
+        var hash = window.location.hash;
+        var cardMatch = hash.match(/^#work-card-(\d)$/);
+
+        if (!cardMatch) {
+          if (!hash) window.scrollTo(0, 0);
+          return;
+        }
+
+        var idx = parseInt(cardMatch[1], 10);
+        var card = document.getElementById("work-card-" + idx);
+        if (!card) return;
+
+        function jumpToCard() {
+          if (window.innerWidth <= 900) {
+            // Mobile: las cards están en flujo normal, alcanza con esto.
+            card.scrollIntoView({ block: "start" });
+            return;
+          }
+          // Desktop: la card vive dentro del pin de GSAP — calculamos el
+          // scrollY exacto según el progreso del timeline, igual que ya
+          // se hace para "#services" en el click-handler del right-nav.
+          var info = window.__jdWorksNavInfo;
+          if (info && info.scrollTrigger && info.totalUnits) {
+            var st = info.scrollTrigger;
+            var progress = Math.min(1, (idx + 0.6) / info.totalUnits);
+            var y = st.start + progress * (st.end - st.start);
+            window.scrollTo({ top: y, behavior: "auto" });
+          } else {
+            card.scrollIntoView({ block: "start" });
+          }
+        }
+
+        // Esperar a que todo (imágenes, ScrollTrigger) termine de asentarse.
+        window.addEventListener("load", function () {
+          setTimeout(jumpToCard, 50);
+        });
       })();
 
     </script>
