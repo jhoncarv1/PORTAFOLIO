@@ -4932,42 +4932,6 @@ header .mobile-menu {
   border-color: var(--primary);
 }
 
-/* --- Mobile: sin scroll-jacking. Las cards se apilan en flujo normal y
-   Services queda siempre visible debajo, en vez de depender del pin de
-   GSAP (que en mobile se desajusta por la barra de direcciones cambiando
-   el alto de pantalla en medio del scroll). El JS también se desactiva
-   por debajo de este mismo ancho — ver video-lightbox.js / script inline. */
-@media (max-width: 900px) {
-  .jd-work-list {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .jd-work-element {
-    position: relative;
-    inset: auto;
-    height: 70vh;
-    min-height: 420px;
-    transform: none !important;
-    opacity: 1 !important;
-  }
-  .jd-work-element.is-hidden {
-    pointer-events: auto;
-  }
-  .jd-works-cta-center {
-    display: none;
-  }
-  .jd-services-overlay {
-    position: relative;
-    inset: auto;
-    opacity: 1 !important;
-    pointer-events: auto;
-    margin-top: 16px;
-    transform: none !important;
-  }
-}
-
 /* --- Card de servicios como capa sobre el boton (dentro del pin) --- */
 .jd-services-overlay {
   position: absolute;
@@ -6017,4 +5981,42 @@ header .mobile-menu {
 
 .section-services .accordion-item {
   cursor: pointer;
+}
+
+/* --- Mobile: sin scroll-jacking. Las cards se apilan en flujo normal y
+   Services queda siempre visible debajo, en vez de depender del pin de
+   GSAP (que en mobile se desajusta por la barra de direcciones cambiando
+   el alto de pantalla en medio del scroll). El JS también se desactiva
+   por debajo de este mismo ancho — ver el script inline en index.html.
+   Al final del archivo a propósito, para ganar la cascada sobre las
+   reglas base de estas mismas clases sin depender de !important. */
+@media (max-width: 900px) {
+  .jd-work-list {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .jd-work-element {
+    position: relative;
+    inset: auto;
+    height: 70vh;
+    min-height: 420px;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .jd-work-element.is-hidden {
+    pointer-events: auto;
+  }
+  .jd-works-cta-center {
+    display: none;
+  }
+  .jd-services-overlay {
+    position: relative;
+    inset: auto;
+    opacity: 1 !important;
+    pointer-events: auto;
+    margin-top: 16px;
+    transform: none !important;
+  }
 }
