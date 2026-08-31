@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="asset/css/bootstrap-select.min.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=94">
+    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=95">
     <link rel="stylesheet" type="text/css" href="asset/css/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/odometer.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/lightbox.min.css">
@@ -602,6 +602,12 @@
       (function () {
         var workList = document.getElementById("jd-work-list");
         if (!workList) return;
+
+        // En mobile no se arma el pin (se rompe con la barra de direcciones
+        // cambiando el alto de pantalla en medio del scroll) — ahí las cards
+        // quedan en flujo normal vía CSS (@media max-width: 900px) y Services
+        // se muestra siempre visible debajo, sin animación de scroll-jacking.
+        if (window.innerWidth <= 900) return;
 
         var cards = gsap.utils.toArray(".jd-work-element");
         var numCards = cards.length;
