@@ -1006,16 +1006,27 @@
       })();
 
       // --- Dónde arrancar el scroll al cargar la página ---
-      // Sin hash (recarga normal, o entrar por primera vez): siempre al
-      // tope. Con hash "#work-card-N" (viene del botón "Back to Works" de
-      // una landing): saltar directo a esa card puntual, no al inicio de
-      // toda la sección Works.
+      // SIEMPRE al tope, salvo el caso puntual de "#work-card-N" (viene del
+      // botón "Back to Works" de una landing), que salta a esa card. Esto
+      // incluye recargar con cualquier otro hash en la URL (#contact,
+      // #services, etc. — quedan ahí después de usar el menú, que son
+      // anchors nativos sin JS propio) — se limpia de la URL para que no
+      // quede pegado y siga causando lo mismo en la próxima recarga.
       (function () {
         var hash = window.location.hash;
         var cardMatch = hash.match(/^#work-card-(\d)$/);
 
         if (!cardMatch) {
-          if (!hash) window.scrollTo(0, 0);
+          window.scrollTo(0, 0);
+          if (hash && history.replaceState) {
+            history.replaceState(null, "", window.location.pathname + window.location.search);
+          }
+          // El navegador puede intentar su propio salto nativo al hash un
+          // poco más tarde (después de que cargue todo) — se refuerza el
+          // tope una vez más para ganarle esa carrera.
+          window.addEventListener("load", function () {
+            setTimeout(function () { window.scrollTo(0, 0); }, 50);
+          });
           return;
         }
 
