@@ -6034,3 +6034,19 @@ header .mobile-menu {
     transform: none !important;
   }
 }
+
+/* --- Mobile: botón de flecha de cada card de Works más chico, para que no
+   se cruce con el pill de "X projects" (el botón fijo de 148px es
+   demasiado grande en pantallas angostas). Aplica a las 6 cards por igual,
+   ya que todas comparten esta misma clase. */
+@media (max-width: 900px) {
+  .jd-work-content .btn-links {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+    border-radius: 16px;
+  }
+  .jd-work-content .infor {
+    right: 80px !important;
+  }
+}
