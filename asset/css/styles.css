@@ -6020,3 +6020,17 @@ header .mobile-menu {
     transform: none !important;
   }
 }
+
+/* --- Mobile: desactivar el reveal letra-por-letra de SplitText (GSAP) ---
+   El ScrollTrigger que anima cada caracter calcula su punto de disparo una
+   sola vez ("once: true") en base al layout inicial; con los cambios de
+   altura dinámicos que aplicamos arriba para mobile, ese cálculo queda
+   desincronizado y el texto se queda a medio animar (letras cortadas /
+   semi-transparentes). Se fuerza el estado final — texto normal, sin el
+   efecto — evitando depender de que el timing de scroll cuadre siempre. */
+@media (max-width: 900px) {
+  .split-text .word > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
