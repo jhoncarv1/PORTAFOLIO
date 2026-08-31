@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="asset/css/bootstrap-select.min.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=99">
+    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=100">
     <link rel="stylesheet" type="text/css" href="asset/css/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/odometer.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/lightbox.min.css">
@@ -858,7 +858,7 @@
       // --- Servicios: desplegar con click (uno a la vez) ---
       (function () {
         var items = document.querySelectorAll("#accordion-services .accordion-item");
-        items.forEach(function (item) {
+        items.forEach(function (item, i) {
           // Quitar el toggle de Bootstrap para manejarlo nosotros mismos
           item.removeAttribute("data-bs-toggle");
           item.removeAttribute("data-bs-target");
@@ -868,6 +868,10 @@
           item.classList.remove("active", "collapsed");
           var collapse = item.querySelector(".accordion-collapse");
           if (collapse) collapse.removeAttribute("data-bs-parent");
+
+          // El primero (Audiovisual Direction) arranca abierto por defecto,
+          // en vez de que los 4 empiecen cerrados/ocultos.
+          if (i === 0) item.classList.add("is-open");
 
           var head = item.querySelector(".accordion-head");
           if (!head) return;
