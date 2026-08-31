@@ -613,7 +613,12 @@
         // cambiando el alto de pantalla en medio del scroll) — ahí las cards
         // quedan en flujo normal vía CSS (@media max-width: 900px) y Services
         // se muestra siempre visible debajo, sin animación de scroll-jacking.
-        if (window.innerWidth <= 900) return;
+        // Ojo: en el instante justo en que corre este script, innerWidth
+        // puede leer 0 transitoriamente (el navegador todavía asentando
+        // dimensiones) — solo se salta el setup si el ancho es un valor
+        // confirmado y chico, nunca por un 0 ambiguo (si de verdad es
+        // mobile, el CSS de la media query igual neutraliza el pin visual).
+        if (window.innerWidth > 0 && window.innerWidth <= 900) return;
 
         var cards = gsap.utils.toArray(".jd-work-element");
         var numCards = cards.length;
@@ -1019,7 +1024,7 @@
         if (!card) return;
 
         function jumpToCard() {
-          if (window.innerWidth <= 900) {
+          if (window.innerWidth > 0 && window.innerWidth <= 900) {
             // Mobile: las cards están en flujo normal, alcanza con esto.
             card.scrollIntoView({ block: "start" });
             return;
