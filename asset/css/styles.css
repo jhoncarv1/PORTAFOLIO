@@ -6040,6 +6040,12 @@ header .mobile-menu {
    demasiado grande en pantallas angostas). Aplica a las 6 cards por igual,
    ya que todas comparten esta misma clase. */
 @media (max-width: 900px) {
+  .jd-work-content {
+    /* .infor va con position:absolute, así que no aporta altura al
+       contenedor — sin esto, el cuadro gris se encoge al tamaño del
+       botón de flecha (56px) y el texto/pill quedan sobresaliendo. */
+    min-height: 170px;
+  }
   .jd-work-content .btn-links {
     width: 56px;
     height: 56px;
