@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Vertical axis -->
+    <path d="M300 72V528" stroke-width="5"/>
+
+    <!-- Central four-point star -->
+    <path d="M300 190
+             C304 270 330 292 410 300
+             C330 304 304 330 300 410
+             C296 330 270 304 190 300
+             C270 296 296 270 300 190Z"
+          fill="#fff" stroke="none"/>
+
+    <!-- Orbital ring -->
+    <path d="M92 300
+             C145 244 225 226 300 230
+             C375 226 455 244 508 300
+             C455 356 375 374 300 370
+             C225 374 145 356 92 300Z"
+          stroke-width="5"/>
+
+    <!-- Small orbiting point -->
+    <circle cx="438" cy="270" r="9" fill="#fff" stroke="none"/>
+
+    <!-- Subtle break in orbit near the top-right -->
+    <path d="M300 230 C325 244 348 257 360 275" stroke-width="5"/>
+  </g>
+
+  <!-- Axis endpoints -->
+  <g fill="#fff">
+    <circle cx="300" cy="72" r="8"/>
+    <circle cx="300" cy="528" r="8"/>
+  </g>
+</svg>
