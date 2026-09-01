@@ -6007,8 +6007,18 @@ header .mobile-menu {
     gap: 16px;
     padding: 0 16px;
   }
+  .jd-work-image {
+    /* Se achica del tamaño completo de la card al mismo tamaño/posición
+       que el contenedor gris (.jd-work-content) — mismos insets, para que
+       la foto quede detrás del texto en vez de ocupar toda la card. */
+    inset: auto;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    height: 120px;
+  }
   .jd-work-image img {
-    opacity: 0.4;
+    opacity: 0.1;
   }
   .jd-work-element {
     position: relative;
