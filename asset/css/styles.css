@@ -3271,9 +3271,9 @@ header .mobile-menu {
 }
 .section-services .services-wrap .heading {
   display: flex;
+  align-items: center;
   gap: 24px;
-  margin-bottom: 0px;
-  margin-bottom: 21px;
+  margin-bottom: 10px;
 }
 .section-services .services-wrap .heading .icon {
   display: flex;
@@ -3283,7 +3283,7 @@ header .mobile-menu {
   height: 60px;
   border-radius: 12px;
   font-size: 32px;
-  margin-top: 14px;
+  flex-shrink: 0;
   background-image: url(../images/section/img-bg.png);
   background-position: center;
   background-repeat: no-repeat;
