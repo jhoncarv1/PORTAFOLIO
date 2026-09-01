@@ -6133,3 +6133,22 @@ header .mobile-menu {
     right: 60px !important;
   }
 }
+
+/* --- Mobile: ícono de My Services más chico, para que el título tenga
+   más ancho disponible — con el tamaño de tablet (50px) algunas palabras
+   se cortaban al expandir el servicio en pantallas angostas. También se
+   saca el margin-top que traía (ya no hace falta: el heading centra por
+   align-items en la regla base) y se achica el gap para ganar más ancho. */
+@media (max-width: 900px) {
+  .section-services .services-wrap .heading {
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  .section-services .services-wrap .heading .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 0;
+  }
+}
