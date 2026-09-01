@@ -6041,7 +6041,7 @@ header .mobile-menu {
     bottom: 6px;
     left: 14px;
     right: 14px;
-    height: 140px;
+    height: 284px;
     border-radius: 20px;
   }
   .jd-work-image img {
@@ -6050,7 +6050,7 @@ header .mobile-menu {
   .jd-work-element {
     position: relative;
     inset: auto;
-    height: 166px;
+    height: 310px;
     min-height: 0;
     opacity: 0;
     transform: translateY(40px);
@@ -6117,7 +6117,7 @@ header .mobile-menu {
     /* .infor va con position:absolute, así que no aporta altura al
        contenedor — sin esto, el cuadro gris se encoge al tamaño del
        botón de flecha y el texto/pill quedan sobresaliendo. */
-    min-height: 144px;
+    min-height: 288px;
     bottom: 4px;
     left: 12px;
     right: 12px;
