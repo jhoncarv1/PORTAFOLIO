@@ -6007,6 +6007,9 @@ header .mobile-menu {
     gap: 16px;
     padding: 0 16px;
   }
+  .jd-work-image img {
+    opacity: 0.4;
+  }
   .jd-work-element {
     position: relative;
     inset: auto;
