@@ -6000,7 +6000,7 @@ header .mobile-menu {
   .jd-work-element {
     position: relative;
     inset: auto;
-    height: 240px;
+    height: 150px;
     min-height: 0;
     transform: none !important;
     opacity: 1 !important;
@@ -6043,16 +6043,20 @@ header .mobile-menu {
   .jd-work-content {
     /* .infor va con position:absolute, así que no aporta altura al
        contenedor — sin esto, el cuadro gris se encoge al tamaño del
-       botón de flecha (56px) y el texto/pill quedan sobresaliendo. */
-    min-height: 170px;
+       botón de flecha y el texto/pill quedan sobresaliendo. */
+    min-height: 120px;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 10px 10px 10px 24px;
   }
   .jd-work-content .btn-links {
-    width: 56px;
-    height: 56px;
-    font-size: 20px;
-    border-radius: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+    border-radius: 12px;
   }
   .jd-work-content .infor {
-    right: 80px !important;
+    right: 60px !important;
   }
 }
