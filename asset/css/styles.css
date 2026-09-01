@@ -3308,6 +3308,12 @@ header .mobile-menu {
 .section-services .services-wrap .heading .title span {
   line-height: 42px;
 }
+.jd-srv-num-arrow {
+  display: inline-flex;
+  align-items: center;
+  font-size: 22px;
+  opacity: 0.6;
+}
 .section-services .services-wrap .list-text {
   display: flex;
   flex-direction: column;
