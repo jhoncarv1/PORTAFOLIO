@@ -3311,8 +3311,10 @@ header .mobile-menu {
 .jd-srv-num-arrow {
   display: inline-flex;
   align-items: center;
-  font-size: 22px;
-  opacity: 0.6;
+}
+.jd-srv-num-arrow .icon {
+  font-size: 16px;
+  height: 16px;
 }
 .section-services .services-wrap .list-text {
   display: flex;
