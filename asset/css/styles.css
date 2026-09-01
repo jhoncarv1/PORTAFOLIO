@@ -6000,8 +6000,8 @@ header .mobile-menu {
   .jd-work-element {
     position: relative;
     inset: auto;
-    height: 70vh;
-    min-height: 420px;
+    height: 240px;
+    min-height: 0;
     transform: none !important;
     opacity: 1 !important;
   }
