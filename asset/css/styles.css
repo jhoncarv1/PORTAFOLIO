@@ -6049,6 +6049,18 @@ header .mobile-menu {
     height: 200px;
     opacity: 0.12;
   }
+
+  /* La causa real del "flash" naranja: el efecto vidrio (backdrop-filter)
+     de estas cards satura 160% lo que hay detrás — como el glow naranja
+     queda justo atrás, el vidrio lo intensifica de golpe apenas la card
+     entra en pantalla. Se baja la saturación solo en mobile (se mantiene
+     el blur/brightness, el efecto vidrio sigue ahí, solo ya no amplifica
+     el naranja de fondo). */
+  .section-contact-inner,
+  .section-services .section-services-inner {
+    -webkit-backdrop-filter: blur(20px) saturate(100%) brightness(1.1);
+    backdrop-filter: blur(20px) saturate(100%) brightness(1.1);
+  }
 }
 
 /* --- Mobile: desactivar el reveal letra-por-letra de SplitText (GSAP) ---
