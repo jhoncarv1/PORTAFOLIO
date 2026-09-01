@@ -1063,6 +1063,15 @@
 
         var idx = parseInt(cardMatch[1], 10);
         var card = document.getElementById("work-card-" + idx);
+
+        // El hash se usa una sola vez, acá mismo, y se limpia de la URL de
+        // inmediato. Si no se limpia, queda pegado y CUALQUIER recarga
+        // posterior (ya sin venir del botón "Back to Works") lo vuelve a
+        // leer y salta otra vez a esa card en vez de ir al hero.
+        if (history.replaceState) {
+          history.replaceState(null, "", window.location.pathname + window.location.search);
+        }
+
         if (!card) return;
 
         function jumpToCard() {
