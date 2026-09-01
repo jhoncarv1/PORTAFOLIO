@@ -5591,6 +5591,13 @@ header .mobile-menu {
   letter-spacing: -0.2px;
 }
 
+/* Nombres de los videos ocultos por el momento (a pedido) — el texto
+   sigue en el HTML (útil para referirnos a cada uno al reordenar), solo
+   no se muestra en pantalla. Se puede reactivar sacando esta clase. */
+.jd-collage-grid.jd-hide-captions .jd-collage-caption {
+  display: none;
+}
+
 /* --- Lightbox de video (reproduce sin salir de la página) --- */
 .jd-video-lightbox {
   position: fixed;
