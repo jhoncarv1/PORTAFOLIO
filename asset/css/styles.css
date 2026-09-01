@@ -6040,16 +6040,17 @@ header .mobile-menu {
     transform: none !important;
   }
 
-  /* La causa real del "flash" naranja: el efecto vidrio (backdrop-filter)
-     de estas cards satura 160% lo que hay detrás — como el glow naranja
-     queda justo atrás, el vidrio lo intensifica de golpe apenas la card
-     entra en pantalla. Se baja la saturación solo en mobile (se mantiene
-     el blur/brightness, el efecto vidrio sigue ahí, solo ya no amplifica
-     el naranja de fondo). */
+  /* El backdrop-filter (efecto vidrio) de estas cards, combinado con la
+     animación de entrada (opacity 0→1 en el contenedor), hace que algunos
+     navegadores mobile lo rendericen mal por un instante: en vez de
+     transparentar lo de atrás, pintan un relleno sólido de golpe ("de la
+     nada aparece un relleno"). Se desactiva el backdrop-filter solo en
+     mobile — la card se queda con el degradé translúcido normal (sin el
+     blur extra), que ya de por sí se ve transparente contra el fondo. */
   .section-contact-inner,
   .section-services .section-services-inner {
-    -webkit-backdrop-filter: blur(20px) saturate(100%) brightness(1.1);
-    backdrop-filter: blur(20px) saturate(100%) brightness(1.1);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
   }
 }
 
