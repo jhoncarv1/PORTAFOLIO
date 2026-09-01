@@ -6038,10 +6038,10 @@ header .mobile-menu {
        a propósito, para garantizar que quede recortada dentro del cuadro
        y no se le vea asomar ni un pixel por el borde. */
     inset: auto;
-    bottom: 14px;
+    bottom: 6px;
     left: 14px;
     right: 14px;
-    height: 116px;
+    height: 124px;
     border-radius: 20px;
   }
   .jd-work-image img {
@@ -6117,8 +6117,8 @@ header .mobile-menu {
     /* .infor va con position:absolute, así que no aporta altura al
        contenedor — sin esto, el cuadro gris se encoge al tamaño del
        botón de flecha y el texto/pill quedan sobresaliendo. */
-    min-height: 120px;
-    bottom: 12px;
+    min-height: 128px;
+    bottom: 4px;
     left: 12px;
     right: 12px;
     padding: 10px 10px 10px 24px;
