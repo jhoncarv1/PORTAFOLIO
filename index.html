@@ -561,8 +561,8 @@
           aboutTitle.animation = gsap.to(aboutTitle.charSplit.chars, {
             scrollTrigger: {
               trigger: aboutTitle,
-              start: "top 95%",
-              end: "top 45%",
+              start: "clamp(top 95%)",
+              end: "clamp(top 45%)",
               scrub: true,
             },
             color: "#ffffff",
