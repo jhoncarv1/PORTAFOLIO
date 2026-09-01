@@ -6040,16 +6040,6 @@ header .mobile-menu {
     transform: none !important;
   }
 
-  /* El glow decorativo de Contact (300px) queda desproporcionado en una
-     pantalla angosta — se ve como un tinte naranja muy saturado cubriendo
-     casi toda la card en vez de un detalle sutil de fondo. Se reduce tamaño
-     y opacidad solo en mobile. */
-  .jd-glow-contact {
-    width: 200px;
-    height: 200px;
-    opacity: 0.12;
-  }
-
   /* La causa real del "flash" naranja: el efecto vidrio (backdrop-filter)
      de estas cards satura 160% lo que hay detrás — como el glow naranja
      queda justo atrás, el vidrio lo intensifica de golpe apenas la card
