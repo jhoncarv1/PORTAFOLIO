@@ -6121,7 +6121,7 @@ header .mobile-menu {
     bottom: 4px;
     left: 12px;
     right: 12px;
-    padding: 10px 10px 10px 24px;
+    padding: 10px 24px 10px 24px;
   }
   .jd-work-content .btn-links {
     width: 44px;
@@ -6130,7 +6130,7 @@ header .mobile-menu {
     border-radius: 12px;
   }
   .jd-work-content .infor {
-    right: 60px !important;
+    right: 74px !important;
   }
 }
 
