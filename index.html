@@ -1092,7 +1092,12 @@
           if (info && info.scrollTrigger && info.totalUnits) {
             if (window.ScrollTrigger) { ScrollTrigger.refresh(); }
             var st = info.scrollTrigger;
-            var progress = Math.min(1, (idx + 0.6) / info.totalUnits);
+            // Cada card ocupa 1 unidad del timeline: entra en [idx-1, idx-1+0.55]
+            // y arranca a desvanecerse otra vez justo en "idx" (cuando entra la
+            // siguiente). El punto seguro donde está 100% visible y quieta es
+            // justo antes de "idx" — con +0.6 (como estaba) ya caía DESPUÉS de
+            // "idx", en plena zona de fade-out (por eso llegaba invisible).
+            var progress = Math.min(1, Math.max(0, idx - 0.2) / info.totalUnits);
             var y = st.start + progress * (st.end - st.start);
             window.scrollTo({ top: y, behavior: "auto" });
           } else {
