@@ -1083,8 +1083,14 @@
           // Desktop: la card vive dentro del pin de GSAP — calculamos el
           // scrollY exacto según el progreso del timeline, igual que ya
           // se hace para "#services" en el click-handler del right-nav.
+          // Ojo: recién cargada la página, ScrollTrigger puede tener
+          // start/end desactualizados (calculados antes de que imágenes y
+          // demás terminen de asentar el layout) — forzamos un refresh()
+          // para que los valores sean los reales antes de usarlos, si no
+          // el salto cae en cualquier punto del pin en vez de en la card.
           var info = window.__jdWorksNavInfo;
           if (info && info.scrollTrigger && info.totalUnits) {
+            if (window.ScrollTrigger) { ScrollTrigger.refresh(); }
             var st = info.scrollTrigger;
             var progress = Math.min(1, (idx + 0.6) / info.totalUnits);
             var y = st.start + progress * (st.end - st.start);
@@ -1095,8 +1101,13 @@
         }
 
         // Esperar a que todo (imágenes, ScrollTrigger) termine de asentarse.
+        // Se reintenta un par de veces más porque en la primera pasada el
+        // layout (imágenes, video de fondo) puede no estar 100% asentado
+        // todavía incluso después de "load".
         window.addEventListener("load", function () {
           setTimeout(jumpToCard, 50);
+          setTimeout(jumpToCard, 400);
+          setTimeout(jumpToCard, 1000);
         });
       })();
 
