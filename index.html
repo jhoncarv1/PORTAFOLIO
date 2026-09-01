@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="asset/css/bootstrap-select.min.css">
 
     <!-- Theme Style -->
-    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=103">
+    <link rel="stylesheet" type="text/css" href="asset/css/styles.css?v=104">
     <link rel="stylesheet" type="text/css" href="asset/css/swiper-bundle.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/odometer.min.css">
     <link rel="stylesheet" type="text/css" href="asset/css/lightbox.min.css">
@@ -746,8 +746,7 @@
 
       // --- Scroll reveal: sections fade+slide in ---
       var revealSections = gsap.utils.toArray([
-        '.jd-contact-col.section-contact',
-        '.jd-works-cta'
+        '.jd-contact-col.section-contact'
       ]);
 
       revealSections.forEach(function(el) {
@@ -765,6 +764,26 @@
           }
         );
       });
+
+      // --- Mobile: works cards y la card de My Services, misma entrada que Contact Me ---
+      // En desktop esas cards ya animan solas (pin/timeline de GSAP más arriba),
+      // así que esto solo corre en mobile (donde ese pin está desactivado y las
+      // cards no tenían ninguna animación de entrada). El fade+slide en sí lo
+      // hace CSS (.is-revealed, ver mobile media query) para no chocar con el
+      // "opacity/transform !important" que blindan esas cards por si el pin
+      // llegara a activarse por error; acá solo se agrega la clase al entrar.
+      if (window.innerWidth > 0 && window.innerWidth <= 900) {
+        var revealOnEnter = document.querySelectorAll(".jd-work-element, .jd-services-overlay");
+        var revealIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-revealed");
+              revealIO.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+        revealOnEnter.forEach(function (el) { revealIO.observe(el); });
+      }
 
       // --- Tech Stack tira: loop continuo + arrastre con mouse + reveal ---
       (function () {

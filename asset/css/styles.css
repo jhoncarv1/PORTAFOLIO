@@ -6002,8 +6002,13 @@ header .mobile-menu {
     inset: auto;
     height: 150px;
     min-height: 0;
-    transform: none !important;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .jd-work-element.is-revealed {
     opacity: 1 !important;
+    transform: none !important;
   }
   .jd-work-element.is-hidden {
     pointer-events: auto;
@@ -6014,9 +6019,14 @@ header .mobile-menu {
   .jd-services-overlay {
     position: relative;
     inset: auto;
-    opacity: 1 !important;
+    opacity: 0;
     pointer-events: auto;
     margin-top: 16px;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .jd-services-overlay.is-revealed {
+    opacity: 1 !important;
     transform: none !important;
   }
 }
