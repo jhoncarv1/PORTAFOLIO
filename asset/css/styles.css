@@ -6029,6 +6029,16 @@ header .mobile-menu {
     opacity: 1 !important;
     transform: none !important;
   }
+
+  /* El glow decorativo de Contact (300px) queda desproporcionado en una
+     pantalla angosta — se ve como un tinte naranja muy saturado cubriendo
+     casi toda la card en vez de un detalle sutil de fondo. Se reduce tamaño
+     y opacidad solo en mobile. */
+  .jd-glow-contact {
+    width: 200px;
+    height: 200px;
+    opacity: 0.12;
+  }
 }
 
 /* --- Mobile: desactivar el reveal letra-por-letra de SplitText (GSAP) ---
