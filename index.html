@@ -558,11 +558,24 @@
         var aboutTitle = document.querySelector(".jd-about-in-hero .title");
         if (aboutTitle && aboutTitle.animation) {
           aboutTitle.animation.scrollTrigger.kill();
+
+          // Calculado en px absolutos (no "top X%") porque en desktop el texto
+          // ya está visible sin hacer scroll: con porcentajes el "start" daba
+          // negativo (antes de scrollY 0) y el texto arrancaba ya iluminado.
+          // Aquí se calcula la posición real y se recorta a >= 0 para que
+          // siempre arranque apagado y termine con margen antes de irse.
+          var vh = window.innerHeight;
+          var elTop = aboutTitle.getBoundingClientRect().top + window.scrollY;
+          var rawStart = elTop - vh * 0.95; // equivale a "top 95%"
+          var rawEnd = elTop - vh * 0.45; // equivale a "top 45%"
+          var start = Math.max(0, rawStart);
+          var end = Math.max(start + 50, rawEnd);
+
           aboutTitle.animation = gsap.to(aboutTitle.charSplit.chars, {
             scrollTrigger: {
               trigger: aboutTitle,
-              start: "clamp(top 95%)",
-              end: "clamp(top 45%)",
+              start: start,
+              end: end,
               scrub: true,
             },
             color: "#ffffff",
