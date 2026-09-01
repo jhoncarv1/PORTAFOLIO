@@ -3311,8 +3311,6 @@ header .mobile-menu {
 .jd-srv-num-arrow {
   display: inline-flex;
   align-items: center;
-}
-.jd-srv-num-arrow .icon {
   font-size: 16px;
   height: 16px;
 }
