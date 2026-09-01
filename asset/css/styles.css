@@ -3237,12 +3237,16 @@ header .mobile-menu {
   transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.section-services .section-services-inner:hover {
-  border-color: var(--primary);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.18),
-    0px 0px 24px 0px rgba(243, 80, 15, 0.25) inset,
-    0 20px 50px rgba(0, 0, 0, 0.45);
+/* Solo en dispositivos con mouse real — ver nota igual en Contact sobre
+   :hover pegado en touch. */
+@media (hover: hover) and (pointer: fine) {
+  .section-services .section-services-inner:hover {
+    border-color: var(--primary);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0px 0px 24px 0px rgba(243, 80, 15, 0.25) inset,
+      0 20px 50px rgba(0, 0, 0, 0.45);
+  }
 }
 .section-services .subtitle {
   margin-bottom: 74px;
@@ -5426,9 +5430,15 @@ header .mobile-menu {
   margin-bottom: 3px;
 }
 
-.jd-contact-col .section-contact-inner:hover {
-  border-color: var(--primary);
-  box-shadow: 0px 0px 24px 0px rgba(243, 80, 15, 0.25) inset;
+/* Solo en dispositivos con mouse real: en touch, :hover se queda "pegado"
+   tras el tap (no hay forma de despegar el cursor), dejando el borde y el
+   glow naranja encendidos todo el tiempo en vez de ser un efecto al pasar
+   el mouse. */
+@media (hover: hover) and (pointer: fine) {
+  .jd-contact-col .section-contact-inner:hover {
+    border-color: var(--primary);
+    box-shadow: 0px 0px 24px 0px rgba(243, 80, 15, 0.25) inset;
+  }
 }
 
 /* Botón final del formulario centrado */
