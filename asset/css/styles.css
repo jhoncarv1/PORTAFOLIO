@@ -6020,14 +6020,16 @@ header .mobile-menu {
     padding: 0 16px;
   }
   .jd-work-image {
-    /* Se achica del tamaño completo de la card al mismo tamaño/posición
-       que el contenedor gris (.jd-work-content) — mismos insets, para que
-       la foto quede detrás del texto en vez de ocupar toda la card. */
+    /* Se achica del tamaño completo de la card al tamaño del contenedor
+       gris (.jd-work-content) — un poco más chica (2px de margen por lado)
+       a propósito, para garantizar que quede recortada dentro del cuadro
+       y no se le vea asomar ni un pixel por el borde. */
     inset: auto;
-    bottom: 12px;
-    left: 12px;
-    right: 12px;
-    height: 120px;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    height: 116px;
+    border-radius: 20px;
   }
   .jd-work-image img {
     opacity: 0.1;
