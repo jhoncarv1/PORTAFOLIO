@@ -4853,7 +4853,19 @@ header .mobile-menu {
   bottom: 20px;
   padding: 12px 12px 12px 36px;
   border-radius: 24px;
-  background: rgba(10, 10, 10, 0.72);
+  /* Mismo "liquid glass" que las cards de Contact / My Services: degradé
+     translúcido + borde + sombra suave. Sin backdrop-filter a propósito —
+     esta card también anima su opacidad (pin de GSAP en desktop, reveal en
+     mobile) y combinado con blur eso causa el glitch de relleno sólido que
+     ya se corrigió ahí; el degradé solo no lo tiene. */
+  background:
+    radial-gradient(120% 100% at 12% -10%, rgba(255, 255, 255, 0.14), transparent 55%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0px 0px 20px 0px rgba(103, 103, 103, 0.25) inset,
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 20px 50px rgba(0, 0, 0, 0.45);
   display: flex;
   gap: 12px;
   align-items: center;
