@@ -5995,6 +5995,7 @@ header .mobile-menu {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    padding: 0 16px;
   }
   .jd-work-element {
     position: relative;
